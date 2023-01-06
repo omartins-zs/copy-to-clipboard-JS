@@ -75,19 +75,20 @@
 </head>
 
 <body>
-    <input type="text" name="texto" id="texto" readonly placeholder="Digite alguma coisa"
-        value="http://programandosolucoes.dev.br/" />
-    <button onclick="copiarTexto()">Copiar</button>
+    
+    <div class="container">
 
-    <script>
-        function copiarTexto() {
-            let textoCopiado = document.getElementById("texto");
-            textoCopiado.select();
-            textoCopiado.setSelectionRange(0, 99999);
-            document.execCommand("copy");
-            alert("O texto é: " + textoCopiado.value);
-        }
-    </script>
+        <input type="text" class="inputCopiar" name="texto" id="texto" readonly placeholder="Digite alguma coisa"
+            value="http://programandosolucoes.dev.br/" />
+        <br> <br>
+        <input type="text" class="inputCopiar" name="texto" id="texto2" readonly placeholder="Digite alguma coisa"
+            value="https://www.youtube.com/" />
+        <br> <br>
+        <input type="text" class="inputCopiar" name="texto" id="texto3" readonly placeholder="Digite alguma coisa"
+            value="https://github.com/" />
+        <br> <br>
+
+    </div>
 
     <div class="footer" id="footer"></div>
 
@@ -99,6 +100,27 @@
     <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
     <script src="footer.js"></script>
+
+    <!-- Exemplo Input  -->
+    <!-- Pode usar mais de um Input só precisa mudar id -->
+    <script type="text/javascript">
+        $(".inputCopiar").on("click", function (e) {
+            var idInput = $(this).attr('id');
+
+            console.log(idInput);
+            copiarTexto(idInput);
+        });
+
+        function copiarTexto(valueInput) {
+            let textoCopiado = document.getElementById(valueInput);
+            textoCopiado.select();
+            textoCopiado.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+            alertify.set('notifier', 'position', 'top-center');
+            alertify.success("O texto foi copiado!!");
+        }
+    </script>
+
 </body>
 
 </html>
