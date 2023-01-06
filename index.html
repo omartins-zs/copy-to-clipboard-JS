@@ -21,76 +21,53 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="footer.css" />
+
+    <link rel="stylesheet" href="style.css">
     <title>Javascript - Copy to Clipboard</title>
 
-    <style>
-        * {
-            margin: 0px;
-            padding: 0px;
-            box-sizing: border-box;
-        }
-
-        body {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgb(34, 152, 241);
-            background: linear-gradient(90deg,
-                    rgba(34, 152, 241, 1) 0%,
-                    rgba(34, 175, 241, 1) 100%);
-        }
-
-        input,
-        button {
-            font-size: 25px;
-            border-radius: 10px;
-            border: none;
-            padding: 20px;
-        }
-
-        input {
-            background-color: #d4e8ff;
-            color: #06224a;
-            width: 500px;
-        }
-
-        input:focus {
-            outline: none;
-        }
-
-        button {
-            margin-left: 10px;
-            background-color: #06224a;
-            color: white;
-            text-transform: uppercase;
-            transition: 0.3s;
-        }
-
-        button:hover {
-            background-color: #010d1f;
-            transition: 0.3s;
-        }
-    </style>
 </head>
 
 <body>
-    
+
     <div class="container">
 
-        <input type="text" class="inputCopiar" name="texto" id="texto" readonly placeholder="Digite alguma coisa"
-            value="http://programandosolucoes.dev.br/" />
-        <br> <br>
-        <input type="text" class="inputCopiar" name="texto" id="texto2" readonly placeholder="Digite alguma coisa"
-            value="https://www.youtube.com/" />
-        <br> <br>
-        <input type="text" class="inputCopiar" name="texto" id="texto3" readonly placeholder="Digite alguma coisa"
-            value="https://github.com/" />
-        <br> <br>
+        <div class="row">
+            <div class="col-8">
+                <img src="/mountain-background.jpg" class="img-fluid rounded" alt="">
+            </div>
+
+            <div class="col-4">
+
+                <div class="input-group mb-3">
+                    <input type="text" name="texto" id="texto1" readonly class="form-control"
+                        value="https://wdadasdada/">
+
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary buttonCopiar" type="button" id="button-addon_1"><i
+                                class="far fa-copy"></i></button>
+                    </div>
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="text" name="texto" id="texto2" readonly class="form-control"
+                        value="https://github.com/">
+
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary buttonCopiar" type="button" id="button-addon_2"><i
+                                class="far fa-copy"></i></button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
     <div class="footer" id="footer"></div>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/cba92a6c1e.js" crossorigin="anonymous"></script>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
@@ -101,18 +78,23 @@
 
     <script src="footer.js"></script>
 
-    <!-- Exemplo Input  -->
-    <!-- Pode usar mais de um Input só precisa mudar id -->
+    <!-- Exemplo e Button Input  -->
+    <!-- Pode usar mais de um Input só precisa mudar id e Copia pelo Button -->
     <script type="text/javascript">
-        $(".inputCopiar").on("click", function (e) {
-            var idInput = $(this).attr('id');
+        $(".buttonCopiar").on("click", function (e) {
+            var idButton = $(this).attr('id');
 
-            console.log(idInput);
-            copiarTexto(idInput);
+            var arrayIdButton = idButton.split("_");
+
+            var idBotao = arrayIdButton[1];
+
+            copiarTexto(idBotao);
+
+            console.log(idBotao);
         });
 
-        function copiarTexto(valueInput) {
-            let textoCopiado = document.getElementById(valueInput);
+        function copiarTexto(idBotao) {
+            let textoCopiado = document.getElementById('texto' + idBotao);
             textoCopiado.select();
             textoCopiado.setSelectionRange(0, 99999);
             document.execCommand("copy");
