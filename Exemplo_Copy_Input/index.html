@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap 4.6 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <title>Javascript - Copy to Clipboard</title>
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgb(34, 152, 241);
+            background: linear-gradient(90deg,
+                    rgba(34, 152, 241, 1) 0%,
+                    rgba(34, 175, 241, 1) 100%);
+        }
+
+        input,
+        button {
+            font-size: 25px;
+            border-radius: 10px;
+            border: none;
+            padding: 20px;
+        }
+
+        input {
+            background-color: #d4e8ff;
+            color: #06224a;
+            width: 500px;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        button {
+            margin-left: 10px;
+            background-color: #06224a;
+            color: white;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #010d1f;
+            transition: 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <input type="text" class="inputCopiar" name="texto" id="texto" readonly placeholder="Digite alguma coisa"
+            value="http://programandosolucoes.dev.br/" />
+        <br> <br>
+        <input type="text" class="inputCopiar" name="texto" id="texto2" readonly placeholder="Digite alguma coisa"
+            value="https://www.youtube.com/" />
+        <br> <br>
+        <input type="text" class="inputCopiar" name="texto" id="texto3" readonly placeholder="Digite alguma coisa"
+            value="https://github.com/" />
+        <br> <br>
+
+    </div>
+
+   <!-- jQuery -->
+   <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+   integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+    <!-- Exemplo Input  -->
+    <!-- Pode usar mais de um Input só precisa mudar id -->
+    <script type="text/javascript">
+        $(".inputCopiar").on("click", function (e) {
+            var idInput = $(this).attr('id');
+
+            console.log(idInput);
+            copiarTexto(idInput);
+        });
+
+        function copiarTexto(valueInput) {
+            let textoCopiado = document.getElementById(valueInput);
+            textoCopiado.select();
+            textoCopiado.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+            alert("O texto : " + textoCopiado.value + " foi copiado!!");
+        }
+    </script>
+
+</body>
+
+</html>
