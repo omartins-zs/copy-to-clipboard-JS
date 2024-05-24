@@ -29,19 +29,16 @@
 
 <body>
 
-    <div class="container">
-
-        <div class="row">
-            <div class="col-8">
+    <div class="container d-flex align-items-center justify-content-center" style="height: 100vh;">
+        <div class="row align-items-center" style="width: 100%;">
+            <div class="col-8 d-flex justify-content-center">
                 <img src="./img/mountain-background.jpg" class="img-fluid rounded" alt="">
             </div>
 
-            <div class="col-4 inputsLinks">
-
+            <div class="col-4 inputsLinks d-flex flex-column align-items-center">
                 <div class="input-group mb-3">
                     <input type="text" name="texto" id="texto1" readonly class="form-control"
                         value="https://www.youtube.com/">
-
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary buttonCopiar" type="button" id="button-addon_1"><i
                                 class="far fa-copy"></i></button>
@@ -51,17 +48,13 @@
                 <div class="input-group mb-3">
                     <input type="text" name="texto" id="texto2" readonly class="form-control"
                         value="https://github.com/">
-
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary buttonCopiar" type="button" id="button-addon_2"><i
                                 class="far fa-copy"></i></button>
                     </div>
                 </div>
-
             </div>
-
         </div>
-
     </div>
 
     <div class="footer" id="footer"></div>
